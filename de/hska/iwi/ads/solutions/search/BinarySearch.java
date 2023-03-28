@@ -1,11 +1,11 @@
 import de.hska.iwi.ads.search.Search;
 
-public class BinarySearch implements Search {
+public class BinarySearch<E extends Comparable<E>> implements Search {
 
     @Override
     public int search(Comparable[] a, Comparable key, int left, int right) {
-        if(left > right){
-            return 1;
+        if(left < right){
+            return left+1;
         }
         int middle = (left + right)/2;
         if (0 ==a[middle].compareTo(key)){
@@ -16,13 +16,13 @@ public class BinarySearch implements Search {
             return search(a, key, left, middle-1);
         }
     }
-    int closestNeighbor(Comparable[] a, Comparable key, int left, int right){
+    private int closestNeighbor(Comparable[] a, Comparable key, int left, int right){
         if(key.compareTo(a[left]) <  0){
                 return left-1;
         }else if(key.compareTo(a[right])> 0){
             return right+1;
         }else{
-            
+            return 1;
         }
        
     }

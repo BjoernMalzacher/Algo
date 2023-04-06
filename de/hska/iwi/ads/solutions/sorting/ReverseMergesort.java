@@ -20,7 +20,6 @@ public class ReverseMergesort extends AbstractMergesort {
         int r = right-1;
         ReverseArray rv = new ReverseArray();
         rv.reverse(a, m, right);
-        int n = 0;
         for (int i = left; i < right; i++) {
             
                 if( r <right || l <= m && a[l].compareTo( a[r]) <= 0){

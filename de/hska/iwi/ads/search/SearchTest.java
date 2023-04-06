@@ -33,7 +33,6 @@ public abstract class SearchTest {
   void testSearchIntegerArrayInteger() {
     Search<Integer> search = createSearch();
     Integer [] a = {0, 2, 4, 7, 9, 10, 11};
-    
     assertEquals(3, search.search(a, 7));
   }
 
@@ -41,7 +40,6 @@ public abstract class SearchTest {
   void testSearchIntegerEArrayInteger1() {
     Search<Integer> search = createSearch();
     Integer [] a = {0, 2, 4, 7, 9, 10, 11};
-    
     assertEquals(3, search.search(a, 6));
   }
   
@@ -49,7 +47,6 @@ public abstract class SearchTest {
   void testSearchIntegerArrayInteger2() {
     Search<Integer> search = createSearch();
     Integer [] a = {0, 2, 4, 7, 9, 10, 11};
-    
     assertEquals(6, search.search(a, 11));
   }
   
@@ -57,7 +54,6 @@ public abstract class SearchTest {
   void testSearchIntegerArrayInteger3() {
     Search<Integer> search = createSearch();
     Integer [] a = {0, 2, 4, 7, 9, 10, 11};
-    
     assertEquals(0, search.search(a, 0));
   }
   
@@ -73,7 +69,7 @@ public abstract class SearchTest {
   void testSearchIntegerArrayInteger5() {
     Search<Integer> search = createSearch();
     Integer [] a = {1, 3, 5, 7, 9};
-    
+    System.out.println(search.search(a, 6));
     assertEquals(3, search.search(a, 6));
   }
   
@@ -81,7 +77,7 @@ public abstract class SearchTest {
   void testSearchIntegerArrayE5() {
     Search<Integer> search = createSearch();
     Integer [] a = {0, 2, 4, 7, 9, 10, 11};
-    
+   
     assertEquals(-1, search.search(a, -2));
   }
   
@@ -122,7 +118,6 @@ public abstract class SearchTest {
   void testSearchIntegerArrayIntegerIntInt4() {
     Search<Integer> search = createSearch();
     Integer [] a = {0, 2, 4, 7, 9, 10, 11};
-    
     assertEquals(4, search.search(a, 9, 3, 3));
   }
   
@@ -172,6 +167,7 @@ public abstract class SearchTest {
   void testSearchStringArrayString7() {
     Search<String> search = createSearch();
     String [] a = {"a", "black", "car", "moving", "over", "public", "roads", "to", "utah"};
+    
     assertEquals(8, search.search(a, "utah"));
   }
   
@@ -194,7 +190,9 @@ public abstract class SearchTest {
   void testSearchLocaleDateArrayLocaleDate1() {
     LocalDate date = LocalDate.of(2018, Month.SEPTEMBER, 10);
     Search<ChronoLocalDate> search = createSearch();
+    
     LocalDate [] dates = {date.minusMonths(2), date.minusDays(5), date, date.plusDays(5), date.plusMonths(2)};
+    System.out.println(search.search(dates, date.plusDays(1)));
     assertEquals(3, search.search(dates, date.plusDays(1)));
   }
 

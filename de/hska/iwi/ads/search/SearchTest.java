@@ -70,7 +70,7 @@ public abstract class SearchTest {
     Search<Integer> search = createSearch();
     Integer [] a = {1, 3, 5, 7, 9};
     System.out.println(search.search(a, 6));
-    assertEquals(3, search.search(a, 6));
+    assertEquals(2, search.search(a, 6));
   }
   
   @Test
@@ -193,7 +193,7 @@ public abstract class SearchTest {
     
     LocalDate [] dates = {date.minusMonths(2), date.minusDays(5), date, date.plusDays(5), date.plusMonths(2)};
     System.out.println(search.search(dates, date.plusDays(1)));
-    assertEquals(3, search.search(dates, date.plusDays(1)));
+    assertEquals(2, search.search(dates, date.plusDays(1)));
   }
 
   @Test

@@ -1,6 +1,7 @@
 package de.hska.iwi.ads.solutions.Hashtabelle;
 
 import java.util.AbstractMap;
+import java.util.Iterator;
 
 import javax.xml.namespace.QName;
 
@@ -10,6 +11,9 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
     @Override
     @SuppressWarnings("unchecked")
     public V get(Object o){
+        if(o == null){
+            throw new NullPointerException();
+        }
         K key = (K) o;
        Entry<K,V> entry= search(key);
         if(entry == null){
@@ -20,8 +24,9 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
     }
     private Entry<K,V> search(K key){
         
-        while(iterator().hasNext()){
-            Entry<K,V> val = iterator().next();
+        Iterator<Entry<K,V>> i = iterator();
+        while(i.hasNext()){
+            Entry<K,V> val = i.next();
             if(val.getKey().equals(key)){
                  return val;
  
@@ -32,11 +37,16 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
 
     @Override
     public V put(K key, V value) {
+        if(key == null || value == null){
+            throw new NullPointerException();
+        }
         Entry<K,V> entry = new SimpleEntry<K, V>(key, value);
         if(head == null){
             ListElement l = new ListElement(entry, null, null);
             head = l;
+            size+=1;
             return null;
+            
         }else{
             Entry<K,V> s = search(key);
             if(s != null){
@@ -45,8 +55,13 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
                 ListElement l = new ListElement(entry, null, head);
                 head.previous = l;
                 head = l;
+                size+=1;
                 return null;
+                
             }
+            
         }
     }
 }
+
+

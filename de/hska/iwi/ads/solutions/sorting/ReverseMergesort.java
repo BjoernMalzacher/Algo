@@ -8,31 +8,29 @@ public class ReverseMergesort extends AbstractMergesort {
     protected void mergesort(Comparable[] a, int left, int right) {
 
     
-        if(a[left].compareTo(a[right]) == 1){
+        if(left < right){
             int middle = (left+right)/2;
             mergesort(a, left, middle);
             mergesort(a, middle+1, right);
             fuse(a, left, middle, right);
         }
     }
-    private void fuse(Comparable[] a, int left, int m,int right){
+    private void fuse(Comparable[] a, int left, int middle,int right){
         int l = left; 
-        int r = right-1;
+        int r = right;
         ReverseArray rv = new ReverseArray();
-        rv.reverse(a, m, right);
-        for (int i = left; i < right; i++) {
-            
-                if( r <right || l <= m && a[l].compareTo( a[r]) <= 0){
+        rv.reverse(a, middle+1, right);
+        for (int i = left; i <= right; i++) {
+                if(a[l].compareTo(a[r])<= 0){
                     b[i] = a[l];
                     l+=1;
                 }else{
                     b[i] = a[r];
                     r-=1;
                 }
-            
-        for (int j = left; j < right; j++) {
-            a[j] = b[j];   
         }
+        for (int j = left; j <= right; j++) {
+            a[j] = b[j];   
         }
     }
 }

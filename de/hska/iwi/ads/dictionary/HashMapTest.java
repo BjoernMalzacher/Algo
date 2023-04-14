@@ -1,9 +1,9 @@
-package de.hska.iwi.ads.solutions.Hashtabelle;
+package de.hska.iwi.ads.dictionary;
 
 import java.util.Hashtable;
 import java.util.Map;
 
-import de.hska.iwi.ads.dictionary.MapTest;
+import de.hska.iwi.ads.solutions.Hashtable.*;
 /**
  * The class "HashMapTest" extends the class "MapTest" in Java.
  */
@@ -11,7 +11,7 @@ public class HashMapTest extends MapTest {
 
     @Override
     public <K extends Comparable<K>, V> Map<K, V> createMap() {
-       return new Hashtabelle<K,V>(100);
+       return new HashTable<K,V>(100);
     }
     
 }

@@ -1,7 +1,6 @@
-package de.hska.iwi.ads.solutions.search;
+package de.hska.iwi.ads.search;
 
-import de.hska.iwi.ads.search.Search;
-import de.hska.iwi.ads.search.SearchTest;
+import de.hska.iwi.ads.solutions.search.BinarySearch;
 
 public class BinarySearchTest extends SearchTest{
 

@@ -1,4 +1,4 @@
-package de.hska.iwi.ads.solutions.Hashtabelle;
+package de.hska.iwi.ads.solutions.Hashtable;
 
 import java.util.AbstractMap;
 import java.util.Iterator;

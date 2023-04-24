@@ -2,7 +2,9 @@ package de.hska.iwi.ads.dictionary;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.nio.charset.Charset;
 import java.util.Map;
+import java.util.Random;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -135,6 +137,25 @@ public abstract class MapTest {
   @Test
   void testPutNull() {
     assertThrows(NullPointerException.class, () -> commonTestMap.put(null, "Null"));
+  }
+
+  @Test
+  void testManyEntries(){
+     Map<Integer,String> map2 = createMap();
+     for (int i = 0; i < 100; i++) {
+      byte[] p = new byte[10];
+      new Random().nextBytes(p);
+      map2.put(new Random().nextInt(900), new String(p , Charset.forName("US-ASCII")));
+      
+     }
+
+     byte[] p = new byte[10];
+     new Random().nextBytes(p);
+     int i = new Random().nextInt(900);
+     map2.put(i, new String(p , Charset.forName("US-ASCII")));
+     assertEquals(new String(p,Charset.forName("US-ASCII")), map2.get(i));
+
+
   }
   
 

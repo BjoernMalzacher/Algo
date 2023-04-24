@@ -2,10 +2,10 @@ package de.hska.iwi.ads.solutions.sorting;
 
 import de.hska.iwi.ads.sorting.Reverse;
 
-public class ReverseArray implements Reverse {
+public class ReverseArray<E extends Comparable<E>> implements Reverse<E> {
     @Override
-    public void reverse(Comparable[] a, int from, int to) {
-        Comparable save;
+    public void reverse(E[] a, int from, int to) {
+        E save;
         while( from < to){
             save = a[from];
             a[from] = a[to];

@@ -24,13 +24,15 @@ public class DoubleLinkedList<K extends Comparable<K>, V> extends AbstractDouble
     }
     private Entry<K,V> search(K key){
         
-        Iterator<Entry<K,V>> i = iterator();
-        while(i.hasNext()){
-            Entry<K,V> val = i.next();
+      
+        ListElement currentElement= head;
+        while(currentElement != null){
+            Entry<K,V> val = currentElement.entry;
             if(val.getKey().equals(key)){
                  return val;
  
-             }     
+             }
+             currentElement = currentElement.next;     
         }
         return null;
     } 

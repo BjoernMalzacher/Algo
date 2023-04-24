@@ -3,8 +3,6 @@ package de.hska.iwi.ads.sorting;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import java.nio.charset.Charset;
 import java.util.Random;
 
@@ -23,46 +21,41 @@ public abstract class SortTest {
         sort = createMergesort();
         commonComparableList1= new Comparable[]{new Integer(2),new Integer(7),new Integer(1),new Integer(6),new Integer(4),new Integer(10)};
         commonComparableList2 = new Comparable[1000];
-        commonComparableList3 = new Comparable[100];
+        commonComparableList3 = new Comparable[1000];
         for (int i = 0; i < 1000; i++) {
             Random rand = new Random();
             commonComparableList2[i] = new Integer(rand.nextInt(100));
-            
+           
 
         }
-        for (int i = 0; i < 100; i++) {
-            byte[] array = new byte[10]; // length is bounded by 7
+        for (int i = 0; i < 1000; i++) {
+            byte[] array = new byte[10]; 
             new Random().nextBytes(array);
-            commonComparableList3[i] = new String(array, Charset.forName("UTF-8"));
+            
+            commonComparableList3[i] = new String(array, Charset.forName("US-ASCII"));
+            
         }
     }
     @Test
     public void SortIntArray(){ 
          sort.sort(commonComparableList1);
-        for (Comparable comparable : commonComparableList1) {
-         System.out.println(comparable.toString());
-        }
     assertEquals(new Integer(1),  (Integer)commonComparableList1[0]);
         
     }
     @Test
     public void SortRandomInt(){
-      sort.sort(commonComparableList2);
-        for (Comparable comparable : commonComparableList2) {
-             System.out.println(comparable.toString());
-        }
+        sort.sort(commonComparableList2);
         for (int i = 0; i < commonComparableList2.length-1; i++) {
+             
           assertTrue(commonComparableList2[i].compareTo(commonComparableList2[i+1])<=0 );
         }
     } 
     @Test
     public void SortRandomString(){
-       sort.sort(commonComparableList3);
-        for (Comparable comparable : commonComparableList3) {
-            //System.out.println(comparable.toString());
-        }
+        sort.sort(commonComparableList3);
         for (int i = 0; i < commonComparableList3.length-1; i++) {
-          assertTrue(commonComparableList3[i].compareTo(commonComparableList3[i+1])<=0 );
+            System.out.println(commonComparableList3[i]);
+            assertTrue(commonComparableList3[i].compareTo(commonComparableList3[i+1])<=0 );
         }
     } 
 }
